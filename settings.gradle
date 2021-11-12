@@ -1,0 +1,2 @@
+rootProject.name = "MVPKotlin"
+include ':app'
