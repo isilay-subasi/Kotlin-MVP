@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">MVPKotlin</string>
+    <string name="app_name">Adam Asmaca</string>
+    <string name="remaining_life">Kalan Can : %d</string>
+    <string name="word">Kelime</string>
+    <string name="try_button_text">Dene</string>
+    <string name="exit">Çıkış Yap</string>
+    <string name="play_again">Tekrar Oyna</string>
+    <string name="successful_message">Tebrikler Bildiniz</string>
+    <string name="fail_message">Bu seferlik olmadı tekrar denemelisin !</string>
+
 </resources>
