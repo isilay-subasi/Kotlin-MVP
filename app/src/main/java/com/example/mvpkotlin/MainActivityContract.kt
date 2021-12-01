@@ -18,6 +18,12 @@ interface MainActivityContract {
         fun setRemainingLife(life: Int)
         fun setCurrentWord(currentWord: String)
         fun initInputArea()
+        fun initSuccesfulView()
+        fun initResultButtonLayout()
+        fun initFailView()
+        fun showPleaseEnterALetterMessage()
+        fun showToastMessage()
+        fun finishActivity()
 
 
     }

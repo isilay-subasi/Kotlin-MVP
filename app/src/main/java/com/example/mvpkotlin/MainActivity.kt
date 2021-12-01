@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
@@ -106,5 +107,32 @@ class MainActivity : AppCompatActivity() , MainActivityContract.View{
 
     override fun initInputArea(){
         this.etCharInput.setText("")
+    }
+
+    override fun initSuccesfulView() {
+        setGameLayoutVisibility(View.GONE)
+        setSuccessfulMessageVisibility(View.VISIBLE)
+    }
+
+    override fun initResultButtonLayout() {
+        setResultButtonLayoutVisibility(View.VISIBLE)
+    }
+
+    override fun initFailView() {
+        setGameLayoutVisibility(View.GONE)
+        setFailMessageVisibility(View.VISIBLE)
+    }
+
+    override fun showPleaseEnterALetterMessage() {
+        showToastMessage()
+
+    }
+
+    override fun showToastMessage() {
+        Toast.makeText(this,getString(R.string.enter_valid_letter_message),Toast.LENGTH_LONG).show()
+    }
+
+    override fun finishActivity() {
+        this.finish()
     }
 }

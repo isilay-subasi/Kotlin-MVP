@@ -7,5 +7,6 @@
     <string name="play_again">Tekrar Oyna</string>
     <string name="successful_message">Tebrikler Bildiniz</string>
     <string name="fail_message">Bu seferlik olmadı tekrar denemelisin !</string>
+    <string name="enter_valid_letter_message">Lütfen geçerli bir harf giriniz</string>
 
 </resources>

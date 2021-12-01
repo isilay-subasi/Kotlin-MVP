@@ -87,4 +87,8 @@ class GameDataManagement {
         }
     }
 
+    fun isInputLetter(letter : String) : Boolean{
+        return !TextUtils.isDigitsOnly(letter)
+    }
+
 }
