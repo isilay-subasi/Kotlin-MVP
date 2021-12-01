@@ -2,6 +2,7 @@ package com.example.mvpkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatButton
@@ -31,9 +32,10 @@ class MainActivity : AppCompatActivity() , MainActivityContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        this.mPresenter = MainActivityPresenter()
+        val gameDataManagement=GameDataManagement()
+        this.mPresenter = MainActivityPresenter(gameDataManagement)//mainactivitypresenter objesini oluşturdun.
         this.mPresenter.setView(this)
-        this.mPresenter.created()
+        this.mPresenter.created()//presenter objesine ekranın açıldığına dair bilgilendirelim.
 
     }
 
@@ -49,5 +51,60 @@ class MainActivity : AppCompatActivity() , MainActivityContract.View{
         this.btnPlayAgain=findViewById(R.id.btn_play_again)
         this.btnExit=findViewById(R.id.btn_exit)
 
+    }
+
+    override fun initOnClick() {
+        this.btnTry.setOnClickListener {
+            this.mPresenter.onTryClick(etCharInput)
+        }
+        this.btnPlayAgain.setOnClickListener {
+            this.mPresenter.onPlayAgainClick()
+        }
+        this.btnExit.setOnClickListener {
+            this.mPresenter.onExitClick()
+        }
+    }
+
+    override fun initGameView(currentWord: String, remainingLife: Int) {
+        setGameLayoutVisibility(View.VISIBLE)
+        setRemainingLifeVisibility(View.VISIBLE)
+        setResultButtonLayoutVisibility(View.GONE)
+        setSuccessfulMessageVisibility(View.GONE)
+        setFailMessageVisibility(View.GONE)
+        setRemainingLife(remainingLife)
+        setCurrentWord(currentWord)
+    }
+
+    override fun setGameLayoutVisibility(visible: Int) {
+           this.gameLayout.visibility=visible
+
+    }
+
+    override fun setRemainingLifeVisibility(visible: Int) {
+            this.tvLife.visibility=visible
+    }
+
+    override fun setResultButtonLayoutVisibility(visibility: Int) {
+            this.resultButtonLayout.visibility=visibility
+    }
+
+    override fun setSuccessfulMessageVisibility(visibility: Int) {
+            this.tvSuccessfulMessage.visibility=visibility
+    }
+
+    override fun setFailMessageVisibility(visibility: Int) {
+        this.tvFailedMessage.visibility=visibility
+    }
+
+    override fun setRemainingLife(life: Int) {
+        this.tvLife.text = getString(R.string.remaining_life,life)
+    }
+
+    override fun setCurrentWord(currentWord: String) {
+        this.tvWord.text=currentWord
+    }
+
+    override fun initInputArea(){
+        this.etCharInput.setText("")
     }
 }
